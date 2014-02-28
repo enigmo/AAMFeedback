@@ -355,6 +355,7 @@ static BOOL _alwaysUseMainBundle = NO;
 - (void)feedbackTopicsViewController:(AAMFeedbackTopicsViewController *) feedbackTopicsViewController
                didSelectTopicAtIndex:(NSInteger) selectedIndex {
     _selectedTopicsIndex = selectedIndex;
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - Internal Info
