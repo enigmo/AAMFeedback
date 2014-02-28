@@ -310,14 +310,16 @@ static BOOL _alwaysUseMainBundle = NO;
 - (void)nextDidPress:(id) sender {
     [self.descriptionTextView resignFirstResponder];
 
-    self.mailComposeViewController.mailComposeDelegate = self;
-    [self.mailComposeViewController setToRecipients:self.toRecipients];
-    [self.mailComposeViewController setCcRecipients:self.ccRecipients];
-    [self.mailComposeViewController setBccRecipients:self.bccRecipients];
-
-    [self.mailComposeViewController setSubject:[self _feedbackSubject]];
-    [self.mailComposeViewController setMessageBody:[self _feedbackBody] isHTML:NO];
-    [self presentViewController:self.mailComposeViewController animated:YES completion:nil];
+    if (self.mailComposeViewController) {
+        self.mailComposeViewController.mailComposeDelegate = self;
+        [self.mailComposeViewController setToRecipients:self.toRecipients];
+        [self.mailComposeViewController setCcRecipients:self.ccRecipients];
+        [self.mailComposeViewController setBccRecipients:self.bccRecipients];
+        
+        [self.mailComposeViewController setSubject:[self _feedbackSubject]];
+        [self.mailComposeViewController setMessageBody:[self _feedbackBody] isHTML:NO];
+        [self presentViewController:self.mailComposeViewController animated:YES completion:nil];
+    }
 }
 
 
